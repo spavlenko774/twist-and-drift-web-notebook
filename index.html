@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity Web Player | Twist _ Drift</title>
+    <title>Unity Web Player | Twist & Drift</title>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes">
     <style>
       body {
@@ -32,11 +32,12 @@
     <script src="Build/twist-and-drift-web.loader.js"></script>
     <script>
       function updateCanvasSize() {
+        const SCALE_FACTOR = 0.5;
         let canvas = document.querySelector("#unity-canvas");
         canvas.style.width = "100vw";
         canvas.style.height = "100vh";
-        canvas.width = Math.floor(window.innerWidth * 0.5);
-        canvas.height = Math.floor(window.innerHeight * 0.5);
+        canvas.width = Math.floor(window.innerWidth * SCALE_FACTOR);
+        canvas.height = Math.floor(window.innerHeight * SCALE_FACTOR);
       }
 
       window.addEventListener("resize", updateCanvasSize);
@@ -49,10 +50,10 @@
         codeUrl: "Build/twist-and-drift-web.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
-        productName: "Twist _ Drift",
+        productName: "Twist & Drift",
         productVersion: "0.1.0",
-        matchWebGLToCanvasSize: false, // Позволяет отдельно управлять рендер-размером
-        devicePixelRatio: 1, // Отключает автоматический рендеринг в высоком DPI
+        matchWebGLToCanvasSize: false,
+        devicePixelRatio: 1,
       });
     </script>
   </body>
