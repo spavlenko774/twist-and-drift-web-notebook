@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity Web Player | Twist _ Drift</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes">
+    <style>
+      body {
+        text-align: center;
+        padding: 0;
+        border: 0;
+        margin: 0;
+        overflow: hidden;
+      }
+      canvas {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        background: #231F20;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="unity-canvas" tabindex="-1"></canvas>
+    <script src="Build/twist-and-drift-web.loader.js"></script>
+    <script>
+      function updateCanvasSize() {
+        let canvas = document.querySelector("#unity-canvas");
+        let width = window.innerWidth;
+        let height = window.innerHeight;
+        canvas.width = Math.floor(width * 0.5);
+        canvas.height = Math.floor(height * 0.5);
+      }
+
+      window.addEventListener("resize", updateCanvasSize);
+      window.addEventListener("load", updateCanvasSize);
+
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        arguments: [],
+        dataUrl: "Build/twist-and-drift-web.data",
+        frameworkUrl: "Build/twist-and-drift-web.framework.js",
+        codeUrl: "Build/twist-and-drift-web.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "Twist _ Drift",
+        productVersion: "0.1.0",
+        matchWebGLToCanvasSize: false, // Позволяет отдельно управлять рендер-размером
+        devicePixelRatio: 1, // Отключает автоматический рендеринг в высоком DPI
+      });
+    </script>
+  </body>
+</html>
