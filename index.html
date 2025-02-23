@@ -48,9 +48,6 @@
         background-color: #00ff00;
         transition: width 0.2s ease;
       }
-      #loading-text {
-        margin-top: 5px;
-      }
     </style>
   </head>
   <body>
@@ -58,7 +55,6 @@
       <div id="loading-bar">
         <div id="loading-progress"></div>
       </div>
-      <p id="loading-text">Загрузка...</p>
     </div>
     <canvas id="unity-canvas" tabindex="-1"></canvas>
     <script src="Build/twist-and-drift-web.loader.js"></script>
@@ -79,7 +75,6 @@
       let canvas = document.querySelector("#unity-canvas");
       let loadingContainer = document.querySelector("#loading-container");
       let loadingProgress = document.querySelector("#loading-progress");
-      let loadingText = document.querySelector("#loading-text");
 
       createUnityInstance(canvas, {
         dataUrl: "Build/twist-and-drift-web.data",
@@ -93,7 +88,6 @@
         devicePixelRatio: 1,
         onProgress: (unityInstance, progress) => {
           loadingProgress.style.width = (progress * 100) + "%";
-          loadingText.innerText = `Загрузка... ${Math.round(progress * 100)}%`;
 
           if (progress === 1) {
             loadingContainer.style.display = "none";
