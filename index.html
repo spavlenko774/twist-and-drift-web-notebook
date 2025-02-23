@@ -46,7 +46,7 @@
         height: 100%;
         width: 0%;
         background-color: #00ff00;
-        transition: width 0.2s ease;
+        transition: width 0.2s linear;
       }
     </style>
   </head>
@@ -88,6 +88,7 @@
         devicePixelRatio: 1,
         onProgress: function (unityInstance, progress) {
           loadingProgress.style.width = (progress * 100) + "%";
+          loadingProgress.setAttribute("aria-valuenow", progress * 100);
 
           if (progress >= 1) {
             setTimeout(() => {
